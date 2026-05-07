@@ -13,6 +13,16 @@ Forked from [sakura-ryoko/tweakeroo](https://github.com/sakura-ryoko/tweakeroo).
 - **Gamma 覆盖修复** — 配置加载后正确恢复 gamma 值
 - **潜影盒预览优化** — 预览时隐藏原版物品提示文字
 
+## MRQ 修复
+
+本分支在原有特性基础上进行了以下 bug 修复：
+
+- **SNAP_AIM_LAST_PITCH 配置丢失**: `Configs.Internal.OPTIONS` 持久化列表遗漏了 `SNAP_AIM_LAST_PITCH`，已补回
+- **FeatureToggle 线程可见性**: `valueBoolean` 添加 `volatile` 修饰
+- **MiscUtils 线程安全**: 移除共享可变 `Date` 对象，`SimpleDateFormat` 缓存复用
+- **Pattern 缓存**: `InventoryUtils.PATTERN_SLOT_RANGE` 静态编译
+- **异常日志**: `EntityRestriction`、`InventoryUtils`、`MixinPresetsScreen` 中空 catch 块添加 `Tweakeroo.logger` 日志
+
 ## 编译
 
 ```bash
