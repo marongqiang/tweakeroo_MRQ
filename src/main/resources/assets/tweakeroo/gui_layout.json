@@ -1,0 +1,397 @@
+{
+  "tabs": [
+    {
+      "tabId": "generic",
+      "name": "Tweakeroo 配置",
+      "groups": [
+        {
+          "groupId": "placement",
+          "name": "放置相关",
+          "defaultExpanded": true,
+          "children": [
+            "tweakFlexibleBlockPlacement",
+            "tweakAccurateBlockPlacement",
+            "tweakFastBlockPlacement",
+            "tweakPlacementRestriction",
+            "tweakPlacementRestrictionFirst",
+            "tweakPlacementRestrictionHand",
+            "tweakPlacementGrid",
+            "tweakPlacementLimit",
+            "tweakYMirror",
+            "tweakFakeSneakPlacement",
+            "tweakPickBeforePlace",
+            "tweakAfterClicker"
+          ]
+        },
+        {
+          "groupId": "breaking",
+          "name": "破坏相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakBreakingRestriction",
+            "tweakBreakingGrid",
+            "tweakBlockTypeBreakRestriction"
+          ]
+        },
+        {
+          "groupId": "camera",
+          "name": "相机相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakFreeCamera",
+            "tweakElytraCamera",
+            "tweakRenderEdgeChunks"
+          ]
+        },
+        {
+          "groupId": "movement",
+          "name": "移动相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakFlySpeed",
+            "tweakCustomFlyDeceleration",
+            "tweakSnapAim",
+            "tweakSnapAimLock",
+            "tweakAimLock",
+            "tweakPermanentSneak",
+            "tweakPermanentSprint",
+            "tweakFakeSneaking",
+            "tweakSneak_1.15.2"
+          ]
+        },
+        {
+          "groupId": "hotbar",
+          "name": "快捷栏相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakHotbarSwap",
+            "tweakHotbarScroll",
+            "tweakHotbarSlotCycle",
+            "tweakHotbarSlotRandomizer",
+            "tweakHandRestock",
+            "tweakToolSwitch",
+            "tweakWeaponSwitch",
+            "tweakSwapAlmostBrokenTools",
+            "tweakRepairMode"
+          ]
+        },
+        {
+          "groupId": "clicking",
+          "name": "点击相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakFastLeftClick",
+            "tweakFastRightClick",
+            "tweakHoldAttack",
+            "tweakHoldUse",
+            "tweakPeriodicAttack",
+            "tweakPeriodicUse",
+            "tweakPeriodicHoldAttack",
+            "tweakPeriodicHoldUse"
+          ]
+        },
+        {
+          "groupId": "inventory",
+          "name": "背包相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakInventoryPreview",
+            "tweakPlayerInventoryPeek",
+            "tweakShulkerBoxDisplay",
+            "tweakMapPreview",
+            "tweakCustomInventoryScreenScale"
+          ]
+        },
+        {
+          "groupId": "rendering",
+          "name": "渲染相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakZoom",
+            "tweakGammaOverride",
+            "tweakRenderInvisibleEntities",
+            "tweakRenderLimitEntities",
+            "tweakLavaVisibility",
+            "tweakExplosionReducedParticles",
+            "tweakEmptyShulkerBoxesStack"
+          ]
+        },
+        {
+          "groupId": "world_interaction",
+          "name": "世界交互相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakBlockReachOverride",
+            "tweakAngelBlock",
+            "tweakSpectatorTeleport"
+          ]
+        },
+        {
+          "groupId": "chat_gui",
+          "name": "聊天界面相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakChatTimestamp",
+            "tweakChatBackgroundColor",
+            "tweakChatPersistentText",
+            "tweakPlayerListAlwaysVisible",
+            "tweakF3Cursor"
+          ]
+        },
+        {
+          "groupId": "utility",
+          "name": "实用相关",
+          "defaultExpanded": false,
+          "children": [
+            "tweakPotionWarning",
+            "tweakPrintDeathCoordinates",
+            "tweakSignCopy",
+            "tweakTabCompleteCoordinate",
+            "tweakCommandBlockExtraFields",
+            "tweakFillCloneLimit",
+            "tweakStructureBlockLimit",
+            "tweakSculkPulseLength"
+          ]
+        },
+        {
+          "groupId": "misc",
+          "name": "其他杂项",
+          "defaultExpanded": false,
+          "children": [
+            "tweakHangableEntityBypass",
+            "tweakEntityTypeAttackRestriction",
+            "tweakItemUnstackingProtection",
+            "tweakMovementKeysLast",
+            "tweakDisableOffhandRendering"
+          ]
+        }
+      ]
+    },
+    {
+      "tabId": "fixes",
+      "name": "修复",
+      "groups": [
+        {
+          "groupId": "fixes_all",
+          "name": "修复相关",
+          "defaultExpanded": true,
+          "children": [
+            "elytraFix",
+            "macHorizontalScroll",
+            "ravagerClientBlockBreakFix"
+          ]
+        }
+      ]
+    },
+    {
+      "tabId": "lists",
+      "name": "列表",
+      "groups": [
+        {
+          "groupId": "lists_block_break",
+          "name": "方块破坏列表",
+          "defaultExpanded": true,
+          "children": [
+            "blockTypeBreakRestrictionListType",
+            "blockTypeBreakRestrictionBlackList",
+            "blockTypeBreakRestrictionWhiteList"
+          ]
+        },
+        {
+          "groupId": "lists_entity_attack",
+          "name": "实体攻击列表",
+          "defaultExpanded": true,
+          "children": [
+            "entityTypeAttackRestrictionListType",
+            "entityTypeAttackRestrictionBlackList",
+            "entityTypeAttackRestrictionWhiteList",
+            "entityWeaponMapping"
+          ]
+        },
+        {
+          "groupId": "lists_fast_placement",
+          "name": "快速放置列表",
+          "defaultExpanded": true,
+          "children": [
+            "fastPlacementItemListType",
+            "fastPlacementItemBlackList",
+            "fastPlacementItemWhiteList"
+          ]
+        },
+        {
+          "groupId": "lists_fast_right_click",
+          "name": "快速右键列表",
+          "defaultExpanded": true,
+          "children": [
+            "fastRightClickBlockListType",
+            "fastRightClickBlockBlackList",
+            "fastRightClickBlockWhiteList",
+            "fastRightClickListType",
+            "fastRightClickBlackList",
+            "fastRightClickWhiteList"
+          ]
+        },
+        {
+          "groupId": "lists_hand_restock",
+          "name": "自动补货列表",
+          "defaultExpanded": true,
+          "children": [
+            "handRestockListType",
+            "handRestockBlackList",
+            "handRestockWhiteList"
+          ]
+        },
+        {
+          "groupId": "lists_potion_warning",
+          "name": "药水警告列表",
+          "defaultExpanded": true,
+          "children": [
+            "potionWarningListType",
+            "potionWarningBlackList",
+            "potionWarningWhiteList"
+          ]
+        },
+        {
+          "groupId": "lists_other",
+          "name": "其他列表",
+          "defaultExpanded": true,
+          "children": [
+            "creativeExtraItems",
+            "flatWorldPresets",
+            "repairModeSlots",
+            "unstackingItems"
+          ]
+        }
+      ]
+    },
+    {
+      "tabId": "disable",
+      "name": "禁用",
+      "groups": [
+        {
+          "groupId": "disable_rendering",
+          "name": "渲染禁用",
+          "defaultExpanded": true,
+          "children": [
+            "disableArmorStandRendering",
+            "disableBeaconBeamRendering",
+            "disableBlockBreakingParticles",
+            "disableBossBar",
+            "disableBossFog",
+            "disableChunkRendering",
+            "disableDeadMobRendering",
+            "disableEntityRendering",
+            "disableFallingBlockEntityRendering",
+            "disableFirstPersonEffectParticles",
+            "disableInventoryEffectRendering",
+            "disableMobSpawnerMobRendering",
+            "disableNauseaEffect",
+            "disableNetherFog",
+            "disableOffhandRendering",
+            "disableParticles",
+            "disableRainEffects",
+            "disableRenderingScaffolding",
+            "disableRenderDistanceFog",
+            "disableScoreboardRendering",
+            "disableShulkerBoxTooltip",
+            "disableSkyDarkness",
+            "disableStatusEffectHud",
+            "disableTileEntityRendering",
+            "disableWorldViewBob"
+          ]
+        },
+        {
+          "groupId": "disable_gameplay",
+          "name": "游戏玩法禁用",
+          "defaultExpanded": false,
+          "children": [
+            "disableAxeStripping",
+            "disableDoubleTapSprint",
+            "disableItemSwitchRenderCooldown",
+            "disableNetherPortalSound",
+            "disableObserver",
+            "disablePortalGuiClosing",
+            "disableShulkerBoxTooltip",
+            "disableSignGui",
+            "disableShovelPathing",
+            "disableSlimeBlockSlowdown",
+            "disableVillagerTradeLocking",
+            "disableWallUnsprint"
+          ]
+        },
+        {
+          "groupId": "disable_entities",
+          "name": "实体禁用",
+          "defaultExpanded": false,
+          "children": [
+            "disableBatSpawning",
+            "disableClientEntityUpdates",
+            "disableClientLightUpdates",
+            "disableConstantChunkSaving",
+            "disableCreativeMenuInfestedBlocks",
+            "disableDeadMobTargeting",
+            "disableEntityTicking",
+            "disableTileEntityTicking"
+          ]
+        }
+      ]
+    },
+    {
+      "tabId": "hotkeys",
+      "name": "热键",
+      "groups": [
+        {
+          "groupId": "hotkeys_all",
+          "name": "热键",
+          "defaultExpanded": true,
+          "children": [
+            "openConfigGui",
+            "accurateBlockPlacementInto",
+            "accurateBlockPlacementReverse",
+            "flexibleBlockPlacementAdjacent",
+            "flexibleBlockPlacementOffset",
+            "flexibleBlockPlacementRotation",
+            "flyPreset1",
+            "flyPreset2",
+            "flyPreset3",
+            "flyPreset4",
+            "hotbarScroll",
+            "hotbarSwapBase",
+            "hotbarSwap1",
+            "hotbarSwap2",
+            "hotbarSwap3",
+            "elytraCamera",
+            "freeCameraPlayerInputs",
+            "freeCameraPlayerMovement",
+            "inventoryPreview",
+            "playerInventoryPeek",
+            "placementRestrictionModeColumn",
+            "placementRestrictionModeDiagonal",
+            "placementRestrictionModeFace",
+            "placementRestrictionModeLayer",
+            "placementRestrictionModeLine",
+            "placementRestrictionModePlane",
+            "placementYMirror",
+            "breakingRestrictionModeColumn",
+            "breakingRestrictionModeDiagonal",
+            "breakingRestrictionModeFace",
+            "breakingRestrictionModeLayer",
+            "breakingRestrictionModeLine",
+            "breakingRestrictionModePlane",
+            "copySignText",
+            "sitDownNearbyPets",
+            "standUpNearbyPets",
+            "skipAllRendering",
+            "skipWorldRendering",
+            "swapElytraChestplate",
+            "toggleCarpetAccuratePlacementProtocol",
+            "toggleGrabCursor",
+            "toolPick",
+            "writeMapsAsImages",
+            "zoomActivate"
+          ]
+        }
+      ]
+    }
+  ]
+}

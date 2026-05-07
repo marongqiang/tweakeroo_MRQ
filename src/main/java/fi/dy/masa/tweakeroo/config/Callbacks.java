@@ -34,6 +34,58 @@ public class Callbacks
 {
     public static boolean skipWorldRendering;
 
+    /**
+     * Called after configs have been loaded from disk.
+     * Needed because reading from JSON doesn't trigger value change callbacks.
+     */
+    public static void onConfigsLoaded(MinecraftClient mc)
+    {
+        if (mc != null)
+        {
+            applyGammaOverrideFromCurrentConfig(mc);
+        }
+    }
+
+    private static void applyGammaOverrideFromCurrentConfig(MinecraftClient mc)
+    {
+        if (mc.options == null)
+        {
+            return;
+        }
+
+        double gammaNow = mc.options.getGamma().getValue();
+
+        if (FeatureToggle.TWEAK_GAMMA_OVERRIDE.getBooleanValue())
+        {
+            // Store original once (only if it looks like a normal gamma value)
+            if (Configs.Internal.GAMMA_VALUE_ORIGINAL.getDoubleValue() <= 0.0 && gammaNow <= 1.0)
+            {
+                Configs.Internal.GAMMA_VALUE_ORIGINAL.setDoubleValue(gammaNow);
+            }
+
+            applyGammaValue(mc, Configs.Generic.GAMMA_OVERRIDE_VALUE.getDoubleValue());
+        }
+        else
+        {
+            double original = Configs.Internal.GAMMA_VALUE_ORIGINAL.getDoubleValue();
+
+            // If we don't have a stored original yet, fall back to whatever is in options
+            if (original <= 0.0 && gammaNow <= 1.0)
+            {
+                original = gammaNow;
+            }
+
+            applyGammaValue(mc, original);
+        }
+    }
+
+    private static void applyGammaValue(MinecraftClient mc, double gamma)
+    {
+        @SuppressWarnings("unchecked")
+        IMixinSimpleOption<Double> opt = (IMixinSimpleOption<Double>) (Object) mc.options.getGamma();
+        opt.tweakeroo_setValueWithoutCheck(gamma);
+    }
+
     public static void init(MinecraftClient mc)
     {
         FeatureToggle.TWEAK_GAMMA_OVERRIDE.setValueChangeCallback(new FeatureCallbackGamma(FeatureToggle.TWEAK_GAMMA_OVERRIDE, mc));
@@ -157,7 +209,7 @@ public class Callbacks
             // If the feature is enabled on game launch, apply it here
             if (feature.getBooleanValue())
             {
-                this.applyValue(Configs.Generic.GAMMA_OVERRIDE_VALUE.getDoubleValue());
+                applyGammaOverrideFromCurrentConfig(mc);
             }
         }
 
@@ -181,9 +233,7 @@ public class Callbacks
 
         private void applyValue(double gamma)
         {
-            @SuppressWarnings("unchecked")
-            IMixinSimpleOption<Double> opt = (IMixinSimpleOption<Double>) (Object) this.mc.options.getGamma();
-            opt.tweakeroo_setValueWithoutCheck(gamma);
+            applyGammaValue(this.mc, gamma);
         }
     }
 

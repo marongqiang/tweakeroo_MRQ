@@ -24,6 +24,7 @@ import fi.dy.masa.malilib.util.JsonUtils;
 import fi.dy.masa.malilib.util.MessageOutputType;
 import fi.dy.masa.malilib.util.restrictions.UsageRestriction.ListType;
 import fi.dy.masa.tweakeroo.Reference;
+import fi.dy.masa.tweakeroo.config.Callbacks;
 import fi.dy.masa.tweakeroo.tweaks.MiscTweaks;
 import fi.dy.masa.tweakeroo.tweaks.PlacementTweaks;
 import fi.dy.masa.tweakeroo.util.InventoryUtils;
@@ -459,6 +460,10 @@ public class Configs implements IConfigHandler
             // But only if we are currently not in a world, since changing configs also re-loads them when closing the menu.
             FeatureToggle.TWEAK_FREE_CAMERA.setBooleanValue(false);
         }
+
+        // Reading config values from JSON doesn't trigger the value change callbacks,
+        // so some tweaks need an explicit re-apply after configs have been loaded.
+        Callbacks.onConfigsLoaded(MinecraftClient.getInstance());
     }
 
     public static void saveToFile()

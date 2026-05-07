@@ -41,7 +41,7 @@ public abstract class MixinItemEntity extends Entity implements IEntityItem
     @Inject(method = "<init>(Lnet/minecraft/world/World;DDDLnet/minecraft/item/ItemStack;)V", at = @At("RETURN"))
     private void removeEmptyShulkerBoxTags(World worldIn, double x, double y, double z, ItemStack stack, CallbackInfo ci)
     {
-        if (FeatureToggle.TWEAK_SHULKERBOX_STACK_GROUND.getBooleanValue())
+        if (FeatureToggle.TWEAK_SHULKERBOX_STACKING.getBooleanValue())
         {
             if (stack.getItem() instanceof BlockItem && ((BlockItem) stack.getItem()).getBlock() instanceof ShulkerBoxBlock)
             {
@@ -56,7 +56,7 @@ public abstract class MixinItemEntity extends Entity implements IEntityItem
     @Inject(method = "canMerge()Z", at = @At("HEAD"), cancellable = true)
     private void allowStackingEmptyShulkerBoxes(CallbackInfoReturnable<Boolean> cir)
     {
-        if (FeatureToggle.TWEAK_SHULKERBOX_STACK_GROUND.getBooleanValue())
+        if (FeatureToggle.TWEAK_SHULKERBOX_STACKING.getBooleanValue())
         {
             ItemStack stack = this.getStack();
 
@@ -76,7 +76,7 @@ public abstract class MixinItemEntity extends Entity implements IEntityItem
     @Inject(method = "tryMerge(Lnet/minecraft/entity/ItemEntity;)V", at = @At("HEAD"), cancellable = true)
     private void stackEmptyShulkerBoxes(ItemEntity other, CallbackInfo ci)
     {
-        if (FeatureToggle.TWEAK_SHULKERBOX_STACK_GROUND.getBooleanValue())
+        if (FeatureToggle.TWEAK_SHULKERBOX_STACKING.getBooleanValue())
         {
             ItemEntity self = (ItemEntity) (Object) this;
             ItemStack stackSelf = self.getStack();

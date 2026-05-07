@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
@@ -31,6 +32,7 @@ import net.minecraft.item.ToolItem;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
@@ -481,6 +483,20 @@ public class InventoryUtils
             ScreenHandler container = player.playerScreenHandler;
             ItemPickerTest test;
 
+            // Prefer shears for some blocks even if other tools are faster (eg. hoes for leaves in 1.20+)
+            if (shouldPreferShears(state))
+            {
+                int shearsSlot = findSuitableSlot(container, (stack) -> stack.isEmpty() == false && stack.getItem() == Items.SHEARS,
+                        UniformIntProvider.create(36, 44), UniformIntProvider.create(9, 35));
+
+                if (shearsSlot != -1 && (shearsSlot - 36) != player.getInventory().selectedSlot)
+                {
+                    swapToolToHand(shearsSlot, mc);
+                }
+
+                return;
+            }
+
             if (FeatureToggle.TWEAK_SWAP_ALMOST_BROKEN_TOOLS.getBooleanValue())
             {
                 test = (currentStack, previous) -> InventoryUtils.isBetterToolAndHasDurability(currentStack, previous, state);
@@ -497,6 +513,23 @@ public class InventoryUtils
                 swapToolToHand(slotNumber, mc);
             }
         }
+    }
+
+    private static boolean shouldPreferShears(BlockState state)
+    {
+        // Leaves and wool have tags; vines are covered by explicit block checks in 1.20.1
+        if (state.isIn(BlockTags.LEAVES) || state.isIn(BlockTags.WOOL))
+        {
+            return true;
+        }
+
+        return state.isOf(Blocks.VINE) ||
+               state.isOf(Blocks.CAVE_VINES) ||
+               state.isOf(Blocks.CAVE_VINES_PLANT) ||
+               state.isOf(Blocks.WEEPING_VINES) ||
+               state.isOf(Blocks.WEEPING_VINES_PLANT) ||
+               state.isOf(Blocks.TWISTING_VINES) ||
+               state.isOf(Blocks.TWISTING_VINES_PLANT);
     }
 
     private static boolean isBetterTool(ItemStack testedStack, ItemStack previousTool, BlockState state)
