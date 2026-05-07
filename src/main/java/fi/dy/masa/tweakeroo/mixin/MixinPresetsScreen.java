@@ -53,7 +53,7 @@ public abstract class MixinPresetsScreen
             {
                 biome = RegistryKey.of(Registry.BIOME_KEY, new Identifier(biomeName));
             }
-            catch (Exception ignore) {}
+            catch (Exception ignore) { Tweakeroo.logger.warn("Invalid biome while parsing flat world string: '{}'", biomeName, ignore); }
 
             if (biome == null)
             {
@@ -67,7 +67,7 @@ public abstract class MixinPresetsScreen
             {
                 item = Registry.ITEM.get(new Identifier(iconItemName));
             }
-            catch (Exception ignore) {}
+            catch (Exception ignore) { Tweakeroo.logger.warn("Invalid item for icon while parsing flat world string: '{}'", iconItemName, ignore); }
 
             if (item == null)
             {

@@ -25,9 +25,7 @@ public class EntityRestriction extends UsageRestriction<EntityType<?>>
                     continue;
                 }
             }
-            catch (Exception ignore) {}
-
-            Tweakeroo.logger.warn("Invalid entity name in a black- or whitelist: '{}'", name);
+            catch (Exception ignore) { Tweakeroo.logger.warn("Invalid entity name in a black- or whitelist: '{}'", name, ignore); }
         }
     }
 }

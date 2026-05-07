@@ -64,7 +64,8 @@ public class MiscUtils
 
     private static SignText previousSignText;
     private static String previousChatText = "";
-    private static final Date DATE = new Date();
+    private static String cachedChatFormat;
+    private static SimpleDateFormat cachedChatSdf;
     private static double lastRealPitch;
     private static double lastRealYaw;
     private static double mouseSensitivity = -1.0F;
@@ -242,9 +243,13 @@ public class MiscUtils
 
     public static String getChatTimestamp()
     {
-        SimpleDateFormat sdf = new SimpleDateFormat(Configs.Generic.CHAT_TIME_FORMAT.getStringValue());
-        DATE.setTime(System.currentTimeMillis());
-        return sdf.format(DATE);
+        String formatStr = Configs.Generic.CHAT_TIME_FORMAT.getStringValue();
+        if (cachedChatFormat == null || cachedChatFormat.equals(formatStr) == false)
+        {
+            cachedChatSdf = new SimpleDateFormat(formatStr);
+            cachedChatFormat = formatStr;
+        }
+        return cachedChatSdf.format(new Date(System.currentTimeMillis()));
     }
 
     public static void setLastChatText(String text)

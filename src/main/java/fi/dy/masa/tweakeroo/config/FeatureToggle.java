@@ -107,7 +107,7 @@ public enum FeatureToggle implements IHotkeyTogglable, IConfigNotifiable<IConfig
     private final IKeybind keybind;
     private final boolean defaultValueBoolean;
     private final boolean singlePlayer;
-    private boolean valueBoolean;
+    private volatile boolean valueBoolean;
     private IValueChangeCallback<IConfigBoolean> callback;
 
     FeatureToggle(String name, boolean defaultValue, String defaultHotkey, String comment)

@@ -372,6 +372,7 @@ public class Configs implements IConfigHandler
                 GAMMA_VALUE_ORIGINAL,
                 HOTBAR_SCROLL_CURRENT_ROW,
                 SLIME_BLOCK_SLIPPERINESS_ORIGINAL,
+                SNAP_AIM_LAST_PITCH,
                 SNAP_AIM_LAST_YAW
         );
     }
@@ -456,13 +457,9 @@ public class Configs implements IConfigHandler
 
         if (MinecraftClient.getInstance().world == null)
         {
-            // Turn off after loading the configs, just in case it was enabled in the config somehow.
-            // But only if we are currently not in a world, since changing configs also re-loads them when closing the menu.
             FeatureToggle.TWEAK_FREE_CAMERA.setBooleanValue(false);
         }
 
-        // Reading config values from JSON doesn't trigger the value change callbacks,
-        // so some tweaks need an explicit re-apply after configs have been loaded.
         Callbacks.onConfigsLoaded(MinecraftClient.getInstance());
     }
 

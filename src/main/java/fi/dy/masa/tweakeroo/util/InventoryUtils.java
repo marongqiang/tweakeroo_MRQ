@@ -63,6 +63,7 @@ public class InventoryUtils
     private static final List<Integer> TOOL_SWITCHABLE_SLOTS = new ArrayList<>();
     private static final List<Integer> TOOL_SWITCH_IGNORED_SLOTS = new ArrayList<>();
     private static final HashMap<EntityType<?>, HashSet<Item>> WEAPON_MAPPING = new HashMap<>();
+    private static final Pattern PATTERN_SLOT_RANGE = Pattern.compile("^(?<start>[0-9])-(?<end>[0-9])$");
 
     public static void setToolSwitchableSlots(String configStr)
     {
@@ -77,7 +78,7 @@ public class InventoryUtils
     public static void parseSlotsFromString(String configStr, Collection<Integer> output)
     {
         String[] parts = configStr.split(",");
-        Pattern patternRange = Pattern.compile("^(?<start>[0-9])-(?<end>[0-9])$");
+        Pattern patternRange = PATTERN_SLOT_RANGE;
 
         output.clear();
 
@@ -214,9 +215,7 @@ public class InventoryUtils
                             continue;
                         }
                     }
-                    catch (Exception ignore) {}
-
-                    Tweakeroo.logger.warn("Unable to find item to use as weapon: '{}'", itemId);
+                    catch (Exception e) { Tweakeroo.logger.warn("Unable to find item to use as weapon: '{}'", itemId, e); }
                 }
             }
 
@@ -238,7 +237,7 @@ public class InventoryUtils
                             continue;
                         }
                     }
-                    catch (Exception ignore) {}
+                    catch (Exception ignore) { Tweakeroo.logger.warn("Unable to find entity: '{}'", entity_id, ignore); }
 
                     Tweakeroo.logger.warn("Unable to find entity: '{}'", entity_id);
                 }
